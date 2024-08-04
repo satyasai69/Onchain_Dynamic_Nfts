@@ -12,12 +12,20 @@ contract MintMoodNft is Script {
             "MoodNft",
             block.chainid
         );
+
         mintNftOnContract(mostRecentydepolyd);
+        filpMood(mostRecentydepolyd);
     }
 
-    function mintNftOnContract(address moodNftAddress) public {
+    function mintNftOnContract(address mostRecentydepolyd) public {
         vm.startBroadcast();
-        MoodNft(moodNftAddress).mintNft();
+        MoodNft(mostRecentydepolyd).mintNft();
+        vm.stopBroadcast();
+    }
+
+    function filpMood(address mostRecentydepolyd) public {
+        vm.startBroadcast();
+        MoodNft(mostRecentydepolyd).filpMood(0);
         vm.stopBroadcast();
     }
 }
