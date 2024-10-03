@@ -8,10 +8,7 @@ import {MoodNft} from "src/MoodNft.sol";
 
 contract MintMoodNft is Script {
     function run() public {
-        address mostRecentydepolyd = DevOpsTools.get_most_recent_deployment(
-            "MoodNft",
-            block.chainid
-        );
+        address mostRecentydepolyd = DevOpsTools.get_most_recent_deployment("ERC1967Proxy", block.chainid);
 
         mintNftOnContract(mostRecentydepolyd);
         filpMood(mostRecentydepolyd);

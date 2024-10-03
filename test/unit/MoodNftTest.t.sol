@@ -4,6 +4,7 @@ pragma solidity ^0.8.19;
 
 import {Test, console} from "forge-std/Test.sol";
 import {MoodNft} from "src/MoodNft.sol";
+import {ERC1967Proxy} from "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol";
 
 contract MoodNftTest is Test {
     MoodNft moodNft;
@@ -23,7 +24,14 @@ contract MoodNftTest is Test {
     address bob = makeAddr("bob");
 
     function setUp() public {
-        moodNft = new MoodNft(HAPPY_SVG_URL, SAD_SVG_URL);
+        //   moodNft = new MoodNft(HAPPY_SVG_URL, SAD_SVG_URL);
+        MoodNft moodNftimp = new MoodNft();
+
+        ERC1967Proxy proxy = new ERC1967Proxy(
+            address(moodNftimp), abi.encodeWithSelector(MoodNft.initialize.selector, HAPPY_SVG_URL, SAD_SVG_URL)
+        );
+
+        moodNft = MoodNft(address(proxy));
     }
 
     function testViewTokenURI() public {
@@ -39,10 +47,7 @@ contract MoodNftTest is Test {
         vm.prank(bob);
         moodNft.filpMood(0);
 
-        assert(
-            keccak256(abi.encodePacked(moodNft.tokenURI(0))) ==
-                keccak256(abi.encodePacked(SAD_MOOD_URI))
-        );
+        assert(keccak256(abi.encodePacked(moodNft.tokenURI(0))) == keccak256(abi.encodePacked(SAD_MOOD_URI)));
     }
 
     function testFilpMoodToHappy() public {
@@ -55,9 +60,6 @@ contract MoodNftTest is Test {
         vm.prank(bob);
         moodNft.filpMood(0);
 
-        assert(
-            keccak256(abi.encodePacked(moodNft.tokenURI(0))) ==
-                keccak256(abi.encodePacked(HAPPY_MOOD_URI))
-        );
+        assert(keccak256(abi.encodePacked(moodNft.tokenURI(0))) == keccak256(abi.encodePacked(HAPPY_MOOD_URI)));
     }
 }

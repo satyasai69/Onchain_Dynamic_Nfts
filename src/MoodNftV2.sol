@@ -8,7 +8,7 @@ import {Base64} from "@openzeppelin/contracts/utils/Base64.sol";
 import {UUPSUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/proxy/utils/UUPSUpgradeable.sol";
 import {OwnableUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol";
 
-contract MoodNft is ERC721Upgradeable, UUPSUpgradeable {
+contract MoodNftV2 is ERC721Upgradeable, UUPSUpgradeable {
     error MoodNft_CantFilpMoodIfNotOwner();
 
     uint256 private s_tokenCounter;
@@ -24,7 +24,7 @@ contract MoodNft is ERC721Upgradeable, UUPSUpgradeable {
 
     function initialize(string memory happysvg, string memory sadsvg) public initializer {
         //   ERC721("MoodNfts", "MNFTs");
-        __ERC721_init("MoodNfts", "MNFTs");
+        __ERC721_init("MoodNftsV2", "MNFTsV2");
         __UUPSUpgradeable_init();
         s_tokenCounter = 0;
         s_sadSvg = sadsvg;
@@ -93,6 +93,6 @@ contract MoodNft is ERC721Upgradeable, UUPSUpgradeable {
     function _authorizeUpgrade(address newImplementation) internal override {}
 
     function version() public pure returns (uint256) {
-        return 1;
+        return 2;
     }
 }

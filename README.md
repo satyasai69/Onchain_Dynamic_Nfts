@@ -1,66 +1,56 @@
-## Foundry
+Here is a possible README.md for your project:
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+# On-Chain Dynamic NFTs with SVG Storage
 
-Foundry consists of:
+This project is a decentralized application (DApp) that allows users to create and store dynamic non-fungible tokens (NFTs) on the Ethereum blockchain. The NFTs are stored on-chain using SVG (Scalable Vector Graphics) images. The project utilizes the ERC1967Proxy contract to enable upgradability of the NFT contract.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Overview
 
-## Documentation
+This project is built using the following technologies and libraries:
 
-https://book.getfoundry.sh/
+- Foundry: A development framework for Ethereum smart contracts
+- OpenZeppelin Contracts: A library of reusable and secure smart contract components
+- ERC1967Proxy: A contract that enables upgradability of the NFT contract
+- SVG: A format for storing and displaying vector graphics
+
+## Features
+
+- On-chain storage of NFTs using SVG images
+- Dynamic NFTs that can be updated and changed
+- Upgradability of the NFT contract using ERC1967Proxy
+- Secure and reusable smart contract components using OpenZeppelin Contracts
+
+## Getting Started
+
+To get started with this project, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/your-github-username/your-project-name.git`
+2. Install dependencies: `forge install`
+3. Compile the contracts: `forge build`
+4. Deploy the contracts: `forge script deploy`
 
 ## Usage
 
-### Build
+Once the contracts are deployed, you can interact with them using the provided scripts. Here are a few examples:
 
-```shell
-$ forge build
-```
+- Mint a new NFT: `forge script mintNft`
+- Update an existing NFT: `forge script updateNft`
+- Get the token URI of an NFT: `forge script getTokenURI`
 
-### Test
+## Contributing
 
-```shell
-$ forge test
-```
+Contributions are welcome! If you find any issues or have suggestions for improvements, please submit a pull request or open an issue on the GitHub repository.
 
-### Format
+## License
 
-```shell
-$ forge fmt
-```
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
-### Gas Snapshots
+## Acknowledgments
 
-```shell
-$ forge snapshot
-```
+This project is built using the following technologies and libraries:
 
-### Anvil
+- Foundry: https://github.com/foundry-rs/foundry
+- OpenZeppelin Contracts: https://github.com/OpenZeppelin/openzeppelin-contracts
+- ERC1967Proxy: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/proxy/ERC1967/ERC1967Proxy.sol
 
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+Thank you to all the contributors who have made this project possible!
